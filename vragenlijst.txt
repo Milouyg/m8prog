@@ -1,0 +1,153 @@
+HR Database
+
+vraag 1:
+SELECT COUNT(*) departments FROM employees
+
+vraag 2:
+SELECT 
+COUNT(department_name)
+FROM departments 
+GROUP BY location_id
+
+vraag 3:
+a:  error_reporting() 
+b: error_log
+
+vraag 4:
+a: function reverse($input){
+ 	$output = strrev($input);
+	return $output; }
+}
+echo reverse("Invoer string"); // geeft "gnirts reovnI"
+echo reverse("Een lange tekst"); // geeft "tsetk egnal neE" 
+
+b: function reverse_case($string) {
+return strrev(strtoupper($string) ^ strtolower($string) ^ $string); 
+}
+echo reverse_case["Fijne Verjaardag"]; 
+echo reverse_case["aLLES OMGedrAAID"]; 
+
+vraag 5:
+a: function is_string_or_array($input){
+	if (is_string($input)){
+ 	echo "De invoer is een string."; 
+	}
+	elseif (is_array($input)){
+	echo "De invoer is een array."; 
+	}
+	else{
+	echo "De invoer is geen string en geen array.";
+	}
+}
+
+$input1 = 'Dit is een string';
+$input2 = [1, 2, 3];
+$input3 = 123;
+
+b: function reverse_array($arr) 
+{ $output = array(); for ($i = count($arr) - 1; $i >= 0; $i--) 
+{ array_push($output, $arr[$i]); }
+ return $output; } } 
+
+$output1 = reverse_input($input1);
+$output2 = reverse_input($input2);
+$output3 = reverse_input($input3);
+
+c: function reverse_input($input) {
+	if (is_string($input)) { 
+	return reverse_string($input); 
+	}
+	elseif (is_array($input)) { 
+	return reverse_array($input); 
+	}
+	else { 
+	return "Input is not a string or an array."; 
+	} 
+}
+
+echo $output1 . "\n"; // geeft "gnirts nee si tiD"
+print_r($output2); // geeft Array ( [0] => 3 [1] => 2 [2] => 1 )
+echo $output3 . "\n"; // geeft "Input is not a string or an array."
+
+vraag 6:
+a: $voornamen = array("Milou", "Jacob", "Nabil", "Luc", "Jeroen", "Carmen", "Frits", "Nick", "Alex", "Nick");
+b: function naamZoeker($naam, $voornamen) {
+$gevonden_positie = array_search(strtolower($naam), array_map('strtolower', $voornamen)); 
+	if ($gevonden_positie !== false) { 
+   	return $gevonden_positie; 
+	} 
+	else { 
+	return -1; 
+	} 
+}
+c: ja
+
+vraag 7:
+a,b,c en d: class Bankrekening { private $banknummer; private $saldo;
+public function construct($banknummer, $saldo = 0) 
+{ $this->banknummer = $banknummer; $this->saldo = $saldo; }
+
+public function storten($bedrag) 
+{ $this->saldo += $bedrag; }
+
+public function opnemen($bedrag) {
+	if ($bedrag > $this->saldo) {
+	echo "Onvoldoende saldo op rekening " . $this->banknummer . "
+	"; } 
+	else { 
+	$this->saldo -= $bedrag; 
+	}
+}
+
+public function getSaldo() { return $this->saldo; } }
+
+vraag 8:
+a,b,c en d:
+class BankrekeningPlus extends Bankrekening { private $limiet = -1000; // Limiet voor negatief saldo
+// Override van de withdraw methode om geld op te kunnen nemen tot aan de limiet 
+
+public function withdraw($bedrag) { 
+	if ($this->saldo - $bedrag >= $this->limiet) 
+	{ $this->saldo -= $bedrag; return true; } else { return false; 
+	}
+}
+
+// Methode om het boete bedrag te berekenen 
+public function berekenBoete() {
+ 	if ($this->saldo < 0) { 
+	$boeteBedrag = abs($this->saldo) * 0.05; // 5% rente voor negatief saldo return $boeteBedrag; 
+	}
+	else { return 0; } 
+}
+// Methode om saldo, boete bedrag en datum/tijd van de berekening weer te geven 
+public function toonOverzicht() { 
+	$datum = date("Y-m-d H:i:s"); 
+// Huidige datum/tijd 
+$boeteBedrag = $this->berekenBoete(); echo "Saldo: " . $this->saldo . " EUR
+"; echo "Boete bedrag: " . $boeteBedrag . " EUR
+"; echo "Datum/tijd: " . $datum; } }
+
+vraag 9:
+a: declare(strict_types=1);
+	class Product {
+	public function construct( 
+	private string $naam, 
+	private string $beschrijving, 
+	private int $prijs 
+	) {
+} 
+
+public function setName(string $naam): void { 
+
+    $this->naam = $naam; 
+
+} 
+
+public function getName(): string { 
+    return $this->naam; 
+	} 
+}
+b: Omdat de constructor al deze properties aanmaakt 
+en initialiseert wanneer er een nieuw object wordt aangemaakt. 
+Door gebruik te maken van de private-keyword bij de parameters van de constructor wordt deze automatisch 
+als properties aangemaakt. Hierdoor hoef je niet aparte properties te maken in de class body.
